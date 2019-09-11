@@ -18,6 +18,7 @@ package com.example.android.dessertclicker
 
 import android.content.ActivityNotFoundException
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -42,6 +43,11 @@ class MainActivity : AppCompatActivity() {
      * the dessert starts to be produced.
      */
     data class Dessert(val imageId: Int, val price: Int, val startProductionAmount: Int)
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("MainActivity", "onStart Called")
+    }
 
     // Create a list of all desserts, in order of when they start being produced
     private val allDesserts = listOf(
@@ -77,6 +83,7 @@ class MainActivity : AppCompatActivity() {
 
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.imageId)
+        Log.i("MainActivity", "onCreate Called")
     }
 
     /**
